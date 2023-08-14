@@ -1,67 +1,107 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading1 = React.createElement(
-  "h1",
-  {
-    id: "Heading1",
-    key: "heading1",
-  },
-  `Heading 1`
-);
-const heading2 = React.createElement(
-  "h1",
-  {
-    id: "Heading2",
-    key: "heading2",
-  },
-  `Heading 2`
-);
-const container = React.createElement(
-  "div",
-  {
-    id: "container",
-  },
-  [heading1, heading2]
+const Header = () => (
+  <div className="header">
+    <h1>Restaurant Hills</h1>
+    <ul className="header_nav">
+      <li>Home 🏠</li>
+      <li>Contact Us 👋</li>
+    </ul>
+  </div>
 );
 
-const headingCE = React.createElement("h1", {}, "Hello world");
-const headingJSX = <h1>Hello world</h1>;
 
+const restaurantData=[
+  {
+    "id": 1,
+    "name": "Tasty Bites",
+    "cuisine": "Italian",
+    "address": "123 Main Street, Cityville",
+    "phone": "555-123-4567",
+    "menu": [
+      {
+        "id": 101,
+        "name": "Margherita Pizza",
+        "price": 12.99
+      },
+      {
+        "id": 102,
+        "name": "Pasta Carbonara",
+        "price": 10.99
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Spice Kingdom",
+    "cuisine": "Indian",
+    "address": "456 First Avenue, Townburg",
+    "phone": "555-987-6543",
+    "menu": [
+      {
+        "id": 201,
+        "name": "Butter Chicken",
+        "price": 14.99
+      },
+      {
+        "id": 202,
+        "name": "Vegetable Biryani",
+        "price": 9.99
+      }
+    ]
+  }
+]
 
-const Header = () => {
-  return React.createElement("h1",{},"Hello WOrld")
-}
-
-const HeaderComponent1 = () => {
- return (
-    <div>
-      <h1>Hello world</h1>
-      <h2>Hello world</h2>
+const MenuCard = ({menu}) => {
+  return (
+    <div className="menu-card">
+      <h5>{ menu.name }  &nbsp; </h5>
+      <h5> { menu.price}</h5>
     </div>
   )
 }
 
+const RestaurantCard = ({ restaurant ,unique} ) => {
+  console.log(restaurant,unique)
+  return (
+    <div>
+      <h1>{restaurant.name}</h1>
+      <h2>{restaurant.cuisine}</h2>
+      <h3>{restaurant.address}</h3>
+      <h4>{restaurant.phone}</h4>
+      <h4>
+        Menu:
+        {restaurant.menu.map(menu => {
+          return < MenuCard menu={ menu} key={menu.id} />
+        })}
+      </h4>
+    </div>
+  )
+}
 
-const Title =()=> (
-  <p>
-    <h1>Hello</h1>
-    <li>Nice to see</li>
-  </p>
+const RestaurantList = () => {
+  
+  return  restaurantData.map(restaurant => {
+    return <RestaurantCard restaurant={restaurant} key={restaurant.id} unique={ restaurant.id} />
+    })
+  
+}
+
+const styleObj = {
+  backgroundColor: "red",
+};
+
+
+const links={ a: "hell", b: "nice" }
+const linkB={ a: "hell", b: "nice" }
+const App = () => (
+  <>
+    <Header/>
+    <RestaurantList/>
+  </>
 );
-const HeaderComponent = () => (
-  <div>
-    {Title()}
-    <h1>Hello world</h1>
-    <h2>Hello world</h2>
-  </div>
-)
 
 
-console.log(JSON.stringify(headingCE) === JSON.stringify(headingJSX));
-console.log(headingJSX);
-// console.log(deepEqual(headingJSX,headingCE))
-
-console.log(container);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<HeaderComponent/>);
+root.render(<App />);

@@ -1,0 +1,14 @@
+.menu-card{
+    display: flex;
+    padding-left: 40px;
+}
+.header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.header_nav{
+    display: flex;
+    list-style-type: none;
+}
