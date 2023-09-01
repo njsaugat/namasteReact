@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 
-const Search = () => {
-  const [searchText, setSearchText] = useState("");
-  console.log(searchText);
-  return (
-    <div className="search-container">
-      <input
-        type="text"
-        className="search-input"
-        value={searchText}
-        placeholder="Search"
-        onChange={(e) => setSearchText(e.target.value)}
-      />
-      <button className="search-btn">search</button>
-      <h1>{searchText}</h1>
-    </div>
-  );
-};
+function Search({ searchText, setSearchText, setFilteredRestaurantList, allRestaurantList }) {
+  return <div className="search-container">
+    <input
+      type="text"
+      className="search-input"
+      value={searchText}
+      placeholder="Search"
+      onChange={(e) => setSearchText(e.target.value)} />
+    <button
+      className="search-btn"
+      onClick={() => {
+        searchTxt = "hello";
+        setFilteredRestaurantList((prevRestaurantData) => {
+          return allRestaurantList.filter((restaurantData) => {
+            return restaurantData.info.name
+              .toLowerCase()
+              .includes(searchText?.toLowerCase());
+          });
+        });
+      } }
+    >
+      search
+    </button>
+  </div>;
+}
+
 
 export default Search;

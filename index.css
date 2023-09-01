@@ -1,14 +1,122 @@
-.menu-card{
-    display: flex;
-    padding-left: 40px;
+.menu-card {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  /* padding-left: 40px; */
 }
-.header{
-    display: flex;
-    align-items: center;
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.header_nav {
+  display: flex;
+  list-style-type: none;
+}
+.restaurant-list {
+  display: flex;
+  justify-content: start;
+  width: full;
+  flex-wrap: wrap;
+}
+
+.restaurant {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 300px;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+}
+/* .shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 05, 255, ),
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  height: 500px;
+  animation: shimmer 2s infinite linear;
+} */
+
+.card {
+    position: relative;
+    -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    background-color: #FFF;
+    border-radius: 6px;
+    height: 500px;
+    overflow: hidden;
+    width: 350px;
+    margin: 40px auto;
+}  
+  .shimmerBG {
+    animation-duration: 2.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #ddd;
+    background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+    background-size: 1200px 100%;
+}
+
+
+@-webkit-keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1200px 0;
+    }
+    100% {
+        background-position: 1200px 0;
+    }
+}
+  
+    .media {
+    height: 200px;
+}
+
+.p-32 {
+    padding: 32px;
+}
+
+.title-line {
+    height: 24px;
     width: 100%;
-    justify-content: space-between;
+    margin-bottom: 12px;
+    border-radius: 20px;
 }
-.header_nav{
-    display: flex;
-    list-style-type: none;
+
+.content-line {
+    height: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 8px;
+}
+  
+  .end {
+      width: 40%;
+    }
+
+
+
+
+.m-t-24 {
+    margin-top: 24px;
+}
+.array {
+  /* transform:translateX(100px) ; */
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
 }

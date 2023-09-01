@@ -1,18 +1,20 @@
 import MenuCard from "./MenuCard"
+import { IMG_CDN_URL } from "../constants"
 const RestaurantCard = ({ restaurant, unique }) => {
   console.log(restaurant,unique)
+  const image_URL=IMG_CDN_URL+restaurant.cloudinaryImageId
   return (
-    <div>
+    <div className="restaurant">
+      <img src={image_URL} />
       <h1>{restaurant.name}</h1>
-      <h2>{restaurant.cuisine}</h2>
-      <h3>{restaurant.address}</h3>
-      <h4>{restaurant.phone}</h4>
-      <h4>
-        Menu:
-        {restaurant.menu.map(menu => {
-          return < MenuCard menu={ menu} key={menu.id} />
+      <p className="menu-card">
+        
+        {restaurant.cuisines.map((menu,index) => {
+          return < MenuCard menu={ menu} key={index} />
         })}
-      </h4>
+      </p>
+      <h3>{ restaurant?.sla?.lastMileTravelString} Far</h3>
+      <h3>Delivery in { restaurant?.sla?.slaString}</h3>
     </div>
   )
 }
