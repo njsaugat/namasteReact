@@ -2,25 +2,22 @@ import React from "react";
 
 const Shimmer = () => {
   // let totalRestaurantsCollection = 20;
-  let totalShimmerCollection = Array.from(
-    { length: 20 },
-    (_, index) => index + 1
-  );
+  let totalShimmerCollection = Array(20).fill('');
   return (
     <div className="restaurant-list">
-      {totalShimmerCollection.map((ele) => {
+      {totalShimmerCollection.map((ele,index) => {
         return (
-          <div className="card">
-            <div class="shimmerBG media"></div>
-            <div class="p-32">
-              <div class="shimmerBG title-line"></div>
-              <div class="shimmerBG title-line end"></div>
+          <div className="card" key={index}>
+            <div className="shimmerBG media"></div>
+            <div className="p-32">
+              <div className="shimmerBG title-line"></div>
+              <div className="shimmerBG title-line end"></div>
 
-              <div class="shimmerBG content-line m-t-24"></div>
-              <div class="shimmerBG content-line"></div>
-              <div class="shimmerBG content-line"></div>
-              <div class="shimmerBG content-line"></div>
-              <div class="shimmerBG content-line end"></div>
+              <div className="shimmerBG content-line m-t-24"></div>
+              <div className="shimmerBG content-line"></div>
+              <div className="shimmerBG content-line"></div>
+              <div className="shimmerBG content-line"></div>
+              <div className="shimmerBG content-line end"></div>
             </div>
           </div>
         );

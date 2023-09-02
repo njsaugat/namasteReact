@@ -30,17 +30,13 @@
   margin: 10px;
   padding: 10px;
 }
-/* .shimmer {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 05, 255, ),
-    rgba(255, 255, 255, 0.5),
-    transparent
-  );
-  height: 500px;
-  animation: shimmer 2s infinite linear;
-} */
 
+.menu{
+  display: flex;
+}
+.search-container{
+    margin-top: 20px;
+}
 .card {
     position: relative;
     -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
@@ -119,4 +115,8 @@
   display: flex;
   width: 300px;
   justify-content: space-around;
+}
+a{
+  text-decoration: none;
+  color: inherit; 
 }
