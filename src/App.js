@@ -7,7 +7,8 @@ import Error from "./components/Error";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
-
+import Profile from "./components/Profile";
+import AboutClass from "./components/AboutClass";
 const App = () => (
   <>
     <Header />
@@ -24,7 +25,13 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/about",
-        element: <About />,
+        element: <AboutClass />,
+        children: [
+          {
+            path: "profile",
+            element: <Profile />
+          }
+        ]
       },
       {
         path: "/contact",
