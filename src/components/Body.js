@@ -33,10 +33,10 @@ const Body = () => {
 
   console.log("render");
 
-  if (allRestaurantList.length === 0) {
+  if (allRestaurantList?.length === 0) {
     return <Shimmer />;
   }
-  if (filteredRestaurantList.length === 0) {
+  if (filteredRestaurantList?.length === 0) {
     return (
       <>
         {/* <Search searchText={searchText} setSearchText={setSearchText}/> */}

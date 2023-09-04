@@ -12,9 +12,9 @@ const RestaurantMenu = () => {
   async function getRestaurantMenu() {
     try {
       const data = await fetch(swiggy_restaurant_URL + id);
-      const restaurantData = await data.json();
-      setRestaurant(restaurantData);
-      console.log(restaurantData);
+      const json = await data.json();
+      console.log(json);
+      setRestaurant(json?.data?.cards[0]?.card?.card?.info);
     } catch (e) {
       console.log(e);
       setRestaurant(null);
@@ -33,11 +33,10 @@ const RestaurantMenu = () => {
         <h3>{restaurant.avgRating}</h3>
         <h3>{restaurant.costForTwoMsg}</h3>
       </div>
-      <h1>Menu</h1>
       <ul>
-        {Object.values(restaurant?.menu?.items).map((item) => {
+        {/* {Object.values(restaurant?.menu?.items).map((item) => {
           <li key={item.id}>{item.name}</li>;
-        })}
+        })} */}
       </ul>
     </div>
   );
