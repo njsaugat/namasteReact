@@ -2,24 +2,18 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL, swiggy_restaurant_URL } from "../constants";
+import useRestaurant from "../hooks/useRestaurant";
+import useOnline from "../hooks/useOnline";
+import Offline from "./Offline";
 const RestaurantMenu = () => {
   const { id } = useParams();
-  const [restaurant, setRestaurant] = useState(null);
-  useEffect(() => {
-    getRestaurantMenu();
-  }, []);
+  const restaurant = useRestaurant(id);
+  const isOnline = useOnline();
 
-  async function getRestaurantMenu() {
-    try {
-      const data = await fetch(swiggy_restaurant_URL + id);
-      const json = await data.json();
-      console.log(json);
-      setRestaurant(json?.data?.cards[0]?.card?.card?.info);
-    } catch (e) {
-      console.log(e);
-      setRestaurant(null);
-    }
+  if (!isOnline) {
+    return <Offline />;
   }
+
   return !restaurant ? (
     <Shimmer />
   ) : (
@@ -33,11 +27,6 @@ const RestaurantMenu = () => {
         <h3>{restaurant.avgRating}</h3>
         <h3>{restaurant.costForTwoMsg}</h3>
       </div>
-      <ul>
-        {/* {Object.values(restaurant?.menu?.items).map((item) => {
-          <li key={item.id}>{item.name}</li>;
-        })} */}
-      </ul>
     </div>
   );
 };

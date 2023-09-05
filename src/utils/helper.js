@@ -1,4 +1,4 @@
-const filterData = (allRestaurantList, searchText) => {
+export const filterData = (allRestaurantList, searchText) => {
   return allRestaurantList.filter((restaurantData) => {
     return restaurantData.info.name
       .toLowerCase()

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import filterData from '../utils/filterData'
+import {filterData} from '../utils/helper'
 
 
 function Search({
@@ -25,7 +25,7 @@ function Search({
           setFilteredRestaurantList(filteredRestaurants);
         }}
       >
-        search
+        Search
       </button>
     </div>
   );

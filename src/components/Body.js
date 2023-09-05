@@ -4,34 +4,23 @@ import { useEffect, useState } from "react";
 import Search from "./Search";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useRestaurantList from "../hooks/useRestaurantList";
+import Offline from "./Offline";
+import useOnline from "../hooks/useOnline";
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [allRestaurantList, setAllRestaurantList] = useState([]);
-  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
-
-  console.log("renderBeforeReturn");
-
-  async function getRestaurantData() {
-    try {
-      const data = await fetch(swiggy_api_URL);
-      const restaurantData = await data.json();
-      const restaurants =
-        restaurantData?.data?.cards[2]?.card?.card.gridElements?.infoWithStyle
-          ?.restaurants;
-      setAllRestaurantList(restaurants);
-      setFilteredRestaurantList(restaurants);
-    } catch (e) {
-      console.log(e);
-      setAllRestaurantList([]);
-      setFilteredRestaurantList([]);
-    }
-  }
-
-  useEffect(() => {
-    getRestaurantData();
-  }, []);
-
+  const [
+    { allRestaurantList, setAllRestaurantList },
+    { filteredRestaurantList, setFilteredRestaurantList },
+  ] = useRestaurantList();
   console.log("render");
+
+  const isOnline = useOnline();
+  console.log("isOffline", isOnline);
+
+  if (!isOnline) {
+    return <Offline />;
+  }
 
   if (allRestaurantList?.length === 0) {
     return <Shimmer />;
@@ -60,7 +49,7 @@ const Body = () => {
         allRestaurantList={allRestaurantList}
       />
       <div className="restaurant-list">
-        {filteredRestaurantList.map((restaurant) => {
+        {filteredRestaurantList?.map((restaurant) => {
           return (
             <Link
               to={`/restaurant/${restaurant.info.id}`}
