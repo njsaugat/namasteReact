@@ -1,6 +1,9 @@
 import MenuCard from "./MenuCard"
+import { useContext } from 'react';
+import UserContext from '../utils/UserContext'
 import { IMG_CDN_URL } from "../constants"
 const RestaurantCard = ({ restaurant, unique }) => {
+  const { user } = useContext(UserContext);
   const image_URL=IMG_CDN_URL+restaurant.cloudinaryImageId
   return (
     <div className="restaurant">
@@ -14,6 +17,7 @@ const RestaurantCard = ({ restaurant, unique }) => {
       </div>
       <h3>{ restaurant?.sla?.lastMileTravelString} Far</h3>
       <h3>Delivery in { restaurant?.sla?.slaString}</h3>
+      <h5>{user.name }</h5>
     </div>
   )
 }

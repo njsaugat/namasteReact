@@ -1,12 +1,14 @@
 import RestaurantCard from "./RestaurantCard";
 import { restaurantData, swiggy_api_URL } from "../constants";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Search from "./Search";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useRestaurantList from "../hooks/useRestaurantList";
 import Offline from "./Offline";
 import useOnline from "../hooks/useOnline";
+import UserContext from "../utils/UserContext";
+
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [
@@ -15,6 +17,7 @@ const Body = () => {
   ] = useRestaurantList();
   console.log("render");
 
+  const { user, setUser } = useContext(UserContext);
   const isOnline = useOnline();
   console.log("isOffline", isOnline);
 
@@ -47,6 +50,14 @@ const Body = () => {
         setSearchText={setSearchText}
         setFilteredRestaurantList={setFilteredRestaurantList}
         allRestaurantList={allRestaurantList}
+      />
+      <input
+        value={user.name}
+        onChange={(e) => {
+          setUser((prevUser) => {
+            return { ...prevUser, name: e.target.value };
+          });
+        }}
       />
       <div className="restaurant-list">
         {filteredRestaurantList?.map((restaurant) => {

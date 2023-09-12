@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import TheHill from "/src/assets/images/TheHill.jpg";
 import useOnline from "../hooks/useOnline";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import UserContext from "../utils/UserContext";
+
+
+
 export const Title = () => {
   return (
     <>
@@ -14,6 +18,7 @@ export const Title = () => {
 };
 
 const Header = () => {
+  const {user} =useContext(UserContext) 
   const isOnline = useOnline();
   // let [item,setItem]=useState(null);
   // useEffect(() => {
@@ -25,6 +30,7 @@ const Header = () => {
     <div className="header">
       <Title />
       <ul className="header_nav">
+        {user.name}
         <Link to="/">
           <li>Home 🏠</li>
         </Link>

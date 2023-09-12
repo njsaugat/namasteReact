@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import ProfileClass from "./ProfileClass";
 import Profile from "./Profile";
 import React from "react";
+import UserContext from "../utils/UserContext";
 class AboutClass extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +20,11 @@ class AboutClass extends React.Component {
         <div>
           Welcome to our restaurant Hills. The restaurant that resides in the
           hills for us
+          <UserContext.Consumer>
+            {({ user }) => (
+              <h1>{ user.name}</h1>
+            )}
+          </UserContext.Consumer>
           {/* <ProfileClass name="First child" /> */}
           <ProfileClass name="Second Child" />
           {/* <Profile  /> */}
