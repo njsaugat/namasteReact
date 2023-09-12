@@ -3,8 +3,7 @@ import TheHill from "/src/assets/images/TheHill.jpg";
 import useOnline from "../hooks/useOnline";
 import { useEffect, useState, useContext } from "react";
 import UserContext from "../utils/UserContext";
-
-
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 
 export const Title = () => {
   return (
@@ -18,8 +17,9 @@ export const Title = () => {
 };
 
 const Header = () => {
-  const {user} =useContext(UserContext) 
+  const { user } = useContext(UserContext);
   const isOnline = useOnline();
+  const cartItems = useSelector((store) => store.cart.items);
   // let [item,setItem]=useState(null);
   // useEffect(() => {
   //   localStorage.setItem('isOnline',isOnline)
@@ -42,6 +42,9 @@ const Header = () => {
         </Link>
         <Link to="/insta-mart">
           <li>Insta Mart</li>
+        </Link>
+        <Link to="/cart">
+          <li>Cart {cartItems.length}</li>
         </Link>
         {/* {item} */}
         {isOnline ? "🟢" : "🔴"}
