@@ -19,12 +19,7 @@ export const Title = () => {
 const Header = () => {
   const { user } = useContext(UserContext);
   const isOnline = useOnline();
-  const cartItems = useSelector((store) => store.cart.items);
-  // let [item,setItem]=useState(null);
-  // useEffect(() => {
-  //   localStorage.setItem('isOnline',isOnline)
-  //   setItem(localStorage.getItem('isOnline'));
-  // },[isOnline])
+  const cartItemsCount = useSelector((store) => store.cart.count);
 
   return (
     <div className="header">
@@ -44,7 +39,7 @@ const Header = () => {
           <li>Insta Mart</li>
         </Link>
         <Link to="/cart">
-          <li>Cart {cartItems.length}</li>
+          <li>Cart {cartItemsCount}</li>
         </Link>
         {/* {item} */}
         {isOnline ? "🟢" : "🔴"}
