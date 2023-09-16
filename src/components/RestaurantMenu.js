@@ -33,7 +33,7 @@ const RestaurantMenu = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="menu">
+      <div className="menu" data-testid="menu-items">
         <div>
           <h1>Restaurant id: {id}</h1>
           <h2>{restaurant.name}</h2>
@@ -56,8 +56,11 @@ const RestaurantMenu = () => {
             return (
               <div key={item.card.info.id}>
                 <h3>{item.card.info.name}</h3>
-                <img width={150} src={`${IMG_CDN_URL}${item.card.info.imageId}`}/>
-                <button onClick={() => handleAddItem(item.card.info)}>
+                <img
+                  width={150}
+                  src={`${IMG_CDN_URL}${item.card.info.imageId}`}
+                />
+                <button onClick={() => handleAddItem(item.card.info)} data-testid="add-item-btn">
                   Add item{" "}
                 </button>
               </div>

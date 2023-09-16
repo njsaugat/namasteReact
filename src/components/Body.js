@@ -59,7 +59,7 @@ const Body = () => {
           });
         }}
       />
-      <div className="restaurant-list">
+      <div className="restaurant-list" data-testid="restaurant-list">
         {filteredRestaurantList?.map((restaurant) => {
           return (
             <Link

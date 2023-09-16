@@ -2,10 +2,10 @@ import React from "react";
 
 const Shimmer = () => {
   // let totalRestaurantsCollection = 20;
-  let totalShimmerCollection = Array(20).fill('');
+  let totalShimmerCollection = Array(20).fill("");
   return (
-    <div className="restaurant-list">
-      {totalShimmerCollection.map((ele,index) => {
+    <div className="restaurant-list" data-testid="shimmer">
+      {totalShimmerCollection.map((ele, index) => {
         return (
           <div className="card" key={index}>
             <div className="shimmerBG media"></div>
@@ -27,3 +27,4 @@ const Shimmer = () => {
 };
 
 export default Shimmer;
+
